@@ -1,0 +1,167 @@
+body {
+  background-color: #F3D9B1;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  font-optical-sizing: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*height: 100vh; per centrare verticalmente*/
+}
+
+h1 {
+  color: #FFA500;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 40px 0;
+    color: #444444;
+}
+
+h3 {
+    color: #FFA500;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+  
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 90hw;
+}
+
+label {
+  font-size: 18px;
+  color: #444444;
+  margin-bottom: 10px;
+}
+
+input{
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  color: #444444;
+  background-color: #F7F7F7;
+  margin-bottom: 10px;
+  width: 100vw;
+  max-width: 400px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  color: #FFFFFF;
+  background-color: #FFA500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 180px;
+}
+
+input[type="submit"]:hover {
+  background-color: #FFC288;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 30em;
+  background-color: linen;
+}
+
+.cardIngrediente {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 1em;
+  width: 400px;
+  background-color: linen;
+}
+
+.card-image img {
+  display: block;
+  margin: 0 auto;
+  width: 20em;
+  height: auto;
+}
+
+.card-title {
+  background-color: #FFA500;
+  color: #FFFFFF;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-title h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #F0F0F0;
+  border-radius: 30px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-bar button {
+  background-color: #FFA500;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 12px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button i {
+  font-size: 18px;
+}
+
+.search-bar button:hover {
+  background-color: #FFC04D;
+}
+
+.search-bar button:focus {
+  outline: none;
+}
