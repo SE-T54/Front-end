@@ -15,8 +15,8 @@
         <div class="container">
             <h1>Aggiungi un ingrediente</h1>
             
-            <form action="" method="post" onsubmit="add_ingredient()">
-                <h2 id="ingrediente">Ingrediente</h3>
+            <form action="" method="post" id="myForm">
+                <h2 id="ingrediente"></h2>
                 <div class="quantity">
                     <label for="quantity">Quantità:</label>
                     <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" style="width:5em" required>
@@ -24,10 +24,10 @@
                 
                 <div class="expiration-date">
                     <label for="expiration-date">Data di scadenza:</label>
-                    <input type="date" id="expiration-date" name="expiration-date" style="width:9em" required>
+                    <input type="date" id="date" name="expiration-date" style="width:9em" required>
                 </div>
                 
-                <input type="submit" value="Aggiungi" onclick="window.location.href = 'dispensa.html'">
+                <input type="submit" value="Aggiungi">
             </form>
         </div>
         <div id="footerDesktop"></div>

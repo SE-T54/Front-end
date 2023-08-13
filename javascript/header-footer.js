@@ -34,9 +34,10 @@ function loadContent() {
           console.error("Impossibile caricare il contenuto del documento HTML: ", error);
         });
     }
-
-    
 }
+
+window.addEventListener("DOMContentLoaded", loadContent);
+window.addEventListener("resize", loadContent);
 
 function getCookie(name) {
     const cookieString = document.cookie;
@@ -46,12 +47,14 @@ function getCookie(name) {
       const cookie = cookies[i].trim();
   
       if (cookie.startsWith(name + '=')) {
-        return decodeURIComponent(cookie.substring(name.length + 1));
+        var str = decodeURIComponent(cookie.substring(name.length + 1));
+        if(name == "sid" && str === -1){
+          window.location.href = "login.html";
+        }else{
+          return str;
+        }
       }
     }
   
     return null;
 }
-
-  window.addEventListener("DOMContentLoaded", loadContent);
-  window.addEventListener("resize", loadContent);
