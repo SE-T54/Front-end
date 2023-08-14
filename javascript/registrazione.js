@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var mail = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var confermaPassword = document.getElementById("confermaPassword").value;
-        var nome = document.getElementById("first-name").value;
-        var cognome = document.getElementById("last-name").value;
+        var username = document.getElementById("username").value;
 
         if(password === confermaPassword){
         // Crea l'oggetto JSON
         var jsonData = {
             "mail": mail,
-            "psw": password
+            "psw": password,
+            "username": username
         }
 
         // Esegui la richiesta POST utilizzando fetch()
