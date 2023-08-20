@@ -109,6 +109,10 @@ img {
   background-color: linen;
 }
 
+.card:hover{
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .cardIngrediente {
   display: flex;
   flex-direction: row;
@@ -195,4 +199,33 @@ img {
   cursor: pointer;
   display: flex;
   flex-direction: row;
+}
+
+select{
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  color: #FFFFFF;
+  background-color: #FFA500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 180px;
+}
+
+option{
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  color: #FFFFFF;
+  background-color: #FFA500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 180px;
+}
+
+option:hover{
+  background-color: #FFFFFF;
+  color: #FFA500;
 }

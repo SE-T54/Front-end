@@ -17,10 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Ottieni i valori dai campi del form
       let sid = getCookie('sid');
       let date = document.getElementById('date').value;
-      let ingredient = document.getElementById('ingrediente').value;
       let quantity = document.getElementById('quantity').value;
 
-      
       // Crea l'oggetto JSON
       var jsonData = {
         "sid": sid,
@@ -39,12 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
           },
           body: JSON.stringify(jsonData)
       })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Risposta dal server:', data);
+      .then(response => {
+        if (response.ok) {
+          console.log('Richiesta POST eseguita con successo');
+          alert("Ingrediente inserito correttamente");
+        } else {
+          console.error('Errore nella richiesta POST:', response.status);
+          alert("Ci dispiace, c\'è stato un errore");
+        }
       })
       .catch(error => {
-          console.error('Errore nella richiesta POST:', error);
+        console.error('Errore nella richiesta POST:', error);
       });
   });
 });

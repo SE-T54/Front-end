@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('myForm');
     
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Impedisci il comportamento predefinito di invio del form
+        event.preventDefault();
         
         let username = document.getElementById('email').value;
         let password = document.getElementById('password').value;
@@ -30,19 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function guestLogin(){
-    console.log("Effettuo login guest");
     fetch('https://back-end-production-d316.up.railway.app/guest_registration')
-        .then(response => response.json())
-        .then(data => {
-            id = data.sessionId;
+    .then(response => response.text())
+    .then(data => {
+        id = data;
 
-            const expirationDate = new Date();
-            expirationDate.setMonth(expirationDate.getMonth() + 3);
+        const expirationDate = new Date();
+        expirationDate.setMonth(expirationDate.getMonth() + 3);
 
-            document.cookie = `sid=${encodeURIComponent(id)}; expires=${expirationDate.toUTCString()}; path=/`;
-            window.location.href = "index.html";
+        document.cookie = `sid=${encodeURIComponent(id)}; expires=${expirationDate.toUTCString()}; path=/`;
+        window.location.href = "index.html";
         })
-        .catch(error => {
-            console.error('Errore:', error);
-        });
+    .catch(error => {
+        console.error('Errore:', error);
+    });
 }

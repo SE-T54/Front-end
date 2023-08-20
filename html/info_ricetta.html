@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Area Privata Utente</title>
+    <title>Info ricetta</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <meta name="viewport" content="width=device-width, initial-scale=0.7">
     <script src="../javascript/header-footer.js"></script>
-    <script src="../javascript/areaRiservata.js"></script>
+    <script src="../javascript/header-footer.js"></script>
   </head>
   <body>
     <div id="headerDesktop"></div>
     <div id="headerMobile"></div>
     <div class="container">
-      <h1>Area riservata</h1>
-      <img src="../img/user-icon.jpg" alt="Icona Utente">
-      <div class="user-info">
-        <!--<h2>Username</h2>-->
-      </div>
-
-      <input type="button" value="Cambio Password" onclick="changePassword()">
-      <input type="button" value="logout" onclick="logout()">
-      <input type="button" value="Elimina account" onclick="deleteAccount()">
-
-      </div>
+      <h1>Info ricetta</h1>
+      <h2 id="ricetta"></h2>
+      <img src="../img/user-icon.jpg" alt="fotoRicetta">
+      <div id="ingredienti"></div>
     </div>
     <div id="footerDesktop"></div>
   </body>

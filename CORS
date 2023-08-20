@@ -1,14 +1,9 @@
-const express = require('express');
-const app = express();
+/*
+ - guest_registration penso che sia Offline
+ - le ricette mi danno i link e le immagini o le hai "disabilitate"
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500'); // Sostituisci con il tuo dominio locale
-    res.header('Access-Control-Allow-Headers', 'Content-Type'); // Consentire solo Content-Type
-    next();
-});
 
-// ... altre configurazioni del server ...
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+
+
+*/

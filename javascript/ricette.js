@@ -1,3 +1,5 @@
+var recipes = [];
+
 function get_recipes() {
   let sid = getCookie('sid');
   let file = "card-ricetta.html";
@@ -12,11 +14,17 @@ function get_recipes() {
           fetch(file)
             .then(response => response.text())
             .then(card => {
+              console.log(item);
+              var recipe = {
+                name: item[0],
+                ingredients: item[1]
+              }
+              recipes.push(recipe);
               str += card.replace("SPAZIOTITOLO", item[0]);
               document.getElementById('ricette').innerHTML = str;
             })
             .catch(error => {
-              console.error('Errore nel recupero del file', error);
+              console.error('Errore nel recupero del file =>', error);
             });
         });
       }
@@ -24,4 +32,18 @@ function get_recipes() {
     .catch(error => {
       console.error('Errore:', error);
     });
+}
+
+function click_function(button) {
+  var recipe = button.textContent.trim();
+  var pagina = 'info_ricetta.html?recipe=' + 'pera' + '&ingredients=' + 'mela';
+  console.log(pagina);
+  window.location.href = pagina;
+}
+
+function trovaValore(chiave) {
+  var oggettoTrovato = recipes.find(function(oggetto) {
+    return oggetto.name === chiave;
+  });
+  return oggettoTrovato.ingredients;
 }

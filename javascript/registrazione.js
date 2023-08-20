@@ -26,12 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(jsonData)
         })
-            .then(data => {
-                console.log('Risposta dal server:', data);
-            })
-            .catch(error => {
-                console.error('Errore nella richiesta POST:', error);
-            });
+        .then(response => {
+            if (response.ok) {
+                alert("Ti sei registrato correttamente");
+                window.location.href = "index.html";
+            } else {
+                console.error('Errore:', error);
+                alert("Registrazione non andata a buon fine, mail o username già in uso.");
+            }
+          })
+          .catch(error => {
+            alert("Registrazione non andata a buon fine, prova a cambiare username.");
+            console.error('Errore nella richiesta POST:', error);
+          }); 
         }else{
             alert("Le password devono essere uguali");
             document.getElementById("confermaPassword").value = "";
