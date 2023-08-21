@@ -14,13 +14,27 @@ function get_recipes() {
           fetch(file)
             .then(response => response.text())
             .then(card => {
-              console.log(item);
-              var recipe = {
-                name: item[0],
-                ingredients: item[1]
+              let title = item.title || "";
+              let ingredients = item.ingredients || [];
+              let link = item.link || "";
+
+              /*parsing immagine*/
+              let imageBinary = item.image;
+              let blob = new Blob([imageBinary], { type: 'image/jpeg' });
+              let blobURL = URL.createObjectURL(blob);
+              let image = blobURL.substring(5);
+              /* fine parsing */
+
+              let recipe = {
+                name: title,
+                ingredients: ingredients,
+                image: image,
+                link: link
               }
+
               recipes.push(recipe);
-              str += card.replace("SPAZIOTITOLO", item[0]);
+              let s = card.replace("SPAZIOIMMAGINE", image);
+              str += s.replace("SPAZIOTITOLO", title);
               document.getElementById('ricette').innerHTML = str;
             })
             .catch(error => {
@@ -35,15 +49,17 @@ function get_recipes() {
 }
 
 function click_function(button) {
-  var recipe = button.textContent.trim();
-  var pagina = 'info_ricetta.html?recipe=' + 'pera' + '&ingredients=' + 'mela';
-  console.log(pagina);
+  let recipe = button.textContent.trim();
+  let ogg = trovaInfo(recipe);
+  let ingredientsJSON = JSON.stringify(ogg.ingredients);
+  let encodedIngredients = encodeURIComponent(ingredientsJSON);
+  let pagina = 'info_ricetta.html?recipe=' + recipe + '&ingredients=' + encodedIngredients + '&link=' + ogg.link;
   window.location.href = pagina;
 }
 
-function trovaValore(chiave) {
-  var oggettoTrovato = recipes.find(function(oggetto) {
+function trovaInfo(chiave) {
+  let oggettoTrovato = recipes.find(function(oggetto) {
     return oggetto.name === chiave;
   });
-  return oggettoTrovato.ingredients;
+  return oggettoTrovato;
 }

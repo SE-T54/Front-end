@@ -93,7 +93,11 @@ function click_function(button){
 function deleteElement(button) {
   let conferma = window.confirm("Vuoi eliminare questo ingrediente?");
   if (conferma) {
-    let ingredient = button.textContent.trim();
+
+    let nameElement = button.querySelector('#name');
+    let ingredient = nameElement.textContent;
+    console.log(ingredient);
+    
     const url = 'https://back-end-production-d316.up.railway.app/remove';
     const data = {
       sid: getCookie('sid'),

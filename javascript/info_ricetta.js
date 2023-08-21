@@ -1,20 +1,26 @@
 var queryString = window.location.search;
 var urlParams = new URLSearchParams(queryString);
 var recipe = urlParams.get('recipe');
-var ingredients = urlParams.get('ingredients');
+var ingredientsJSON = urlParams.get('ingredients');
+var link = urlParams.get('link');
+var ingredients = JSON.parse(decodeURIComponent(ingredientsJSON));
 var str = "";
+var file = "card-ingrediente.html";
 
 document.addEventListener('DOMContentLoaded', loadInfo);
 
 function loadInfo(){
-    console.log(recipe);
   document.getElementById('ricetta').textContent = recipe;
+  document.getElementById('link').href = link;
+  console.log(link);
 
   ingredients.forEach(item => {
     fetch(file)
       .then(response => response.text())
       .then(card => {
-        var s = card.replace("SPAZIONOME", item);
+        let keysArray = Object.keys(item);
+        let ingrediente = keysArray[0];
+        let s = card.replace("SPAZIONOME", ingrediente);
         str += s.replace("SPAZIODATA", "");
         document.getElementById('ingredienti').innerHTML = str;      
       })
@@ -23,3 +29,5 @@ function loadInfo(){
       });
   });
 }
+
+function click_function(){}

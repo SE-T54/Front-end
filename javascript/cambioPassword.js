@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
             })
                 .then(response => {
                     if (response.ok) {
-                        console.log('Cambio Passwordeffettuato');
                         alert("Cambio password effettuato");
                     } else {
-                        console.error('Eoore ->', response.status);
+                        console.error('Errore ->', response.status);
                         alert("Ci dispiace, c\'è stato un errore");
                     }
                 })
                 .catch(error => {
-                    console.error('Errore nella richiesta POST:', error);
+                    console.error('Errore nella richiesta POST:', error);ù
+                    alert("Ci dispiace, c\'è stato un errore, assicurarsi che la vecchia password sia corretta");
                 });
         } else {
             alert("Le password devono essere uguali");

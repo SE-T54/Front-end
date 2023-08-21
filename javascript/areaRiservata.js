@@ -9,10 +9,12 @@ function logout(){
 
 function deleteAccount(){
     let sid = getCookie('sid');
+    logout();
     fetch('https://back-end-production-d316.up.railway.app/delete_account?sid=' + sid)
-    .then(response => response.json())
-    .then(data => {
-        logout();
+    .then(response => {
+        if (response.ok) {
+            alert("Account Eliminato correttamente");
+        }
     })
     .catch(error => {
         alert("Errore nell'eliminazione dell'account.");
