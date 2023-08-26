@@ -3,6 +3,7 @@ var urlParams = new URLSearchParams(queryString);
 var recipe = urlParams.get('recipe');
 var ingredientsJSON = urlParams.get('ingredients');
 var link = urlParams.get('link');
+var image = urlParams.get('image');
 var ingredients = JSON.parse(decodeURIComponent(ingredientsJSON));
 var str = "";
 var file = "card-ingrediente.html";
@@ -12,7 +13,6 @@ document.addEventListener('DOMContentLoaded', loadInfo);
 function loadInfo(){
   document.getElementById('ricetta').textContent = recipe;
   document.getElementById('link').href = link;
-  console.log(link);
 
   ingredients.forEach(item => {
     fetch(file)
@@ -25,9 +25,13 @@ function loadInfo(){
         document.getElementById('ingredienti').innerHTML = str;      
       })
       .catch(error => {
-        console.error('Errore nel recupero degli ingredienti', error);
+        console.error(error);
       });
   });
 }
 
-function click_function(){}
+function click_function(button) {
+  var ingredient = button.textContent.trim();
+  var pagina = "aggiungi-ingrediente.html?ingrediente=" + ingredient;
+  window.location.href = pagina;
+}

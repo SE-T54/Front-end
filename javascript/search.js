@@ -36,7 +36,7 @@ function showIngredients(){
       document.getElementById('ingredienti').innerHTML = str;
     })
     .catch(error => {
-      console.error('Errore nel recupero del file', error);
+      console.error(error);
     });
 }
 
@@ -50,8 +50,9 @@ function get_all_ingredients() {
           document.getElementById('ingredienti').innerHTML = "<h3>Fai la tua ricerca :)</h3>";  
         });
       }
-    ).catch(error => {
-      console.error('Errore:', error);
+    )
+    .catch(error => {
+      console.error(error);
     });
 }
 

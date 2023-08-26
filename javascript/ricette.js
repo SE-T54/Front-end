@@ -3,7 +3,7 @@ var recipes = [];
 function get_recipes() {
   let sid = getCookie('sid');
   let file = "card-ricetta.html";
-  var str = "";
+  let str = "";
   fetch('https://back-end-production-d316.up.railway.app/recipes?sid=' + sid)
     .then(response => response.json())
     .then(data => {
@@ -17,18 +17,12 @@ function get_recipes() {
               let title = item.title || "";
               let ingredients = item.ingredients || [];
               let link = item.link || "";
-
-              /*parsing immagine*/
-              let imageBinary = item.image;
-              let blob = new Blob([imageBinary], { type: 'image/jpeg' });
-              let blobURL = URL.createObjectURL(blob);
-              let image = blobURL.substring(5);
-              /* fine parsing */
+              let image = "data:image/jpeg;base64," + item.image;
 
               let recipe = {
                 name: title,
                 ingredients: ingredients,
-                image: image,
+                //image: image,
                 link: link
               }
 
@@ -38,13 +32,13 @@ function get_recipes() {
               document.getElementById('ricette').innerHTML = str;
             })
             .catch(error => {
-              console.error('Errore nel recupero del file =>', error);
+              console.error(error);
             });
         });
       }
     })
     .catch(error => {
-      console.error('Errore:', error);
+      console.error(error);
     });
 }
 
@@ -53,8 +47,9 @@ function click_function(button) {
   let ogg = trovaInfo(recipe);
   let ingredientsJSON = JSON.stringify(ogg.ingredients);
   let encodedIngredients = encodeURIComponent(ingredientsJSON);
+  let img = ogg.image;
   let pagina = 'info_ricetta.html?recipe=' + recipe + '&ingredients=' + encodedIngredients + '&link=' + ogg.link;
-  window.location.href = pagina;
+  window.location.href = pagina;  
 }
 
 function trovaInfo(chiave) {

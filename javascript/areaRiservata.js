@@ -17,9 +17,8 @@ function deleteAccount(){
         }
     })
     .catch(error => {
-        alert("Errore nell'eliminazione dell'account.");
-        console.error('Errore:', error);
-    });
+        console.error(error);
+      });
 }
 
 function changePassword(){

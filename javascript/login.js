@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('password').value = "";
                     alert("Credenziali errate");
                 }else{
-                    console.error('Errore:', error);
+                    console.error(error);
                 }
             });
     });
@@ -42,6 +42,6 @@ function guestLogin(){
         window.location.href = "index.html";
         })
     .catch(error => {
-        console.error('Errore:', error);
-    });
+        alert(error);
+        });
 }

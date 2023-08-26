@@ -4,7 +4,7 @@ function loadContent() {
   if (window.innerWidth > 768) {
     var pathname = window.location.pathname;
     var nomePagina = pathname.substring(pathname.lastIndexOf('/') + 1);
-    if ((nomePagina == "login.html" ||  nomePagina == "signup.html") || (document.cookie.indexOf('sid=') !== -1 && getCookie("sid") != -1)) {
+    if ((nomePagina == "login.html" ||  nomePagina == "signup.html") || (document.cookie.indexOf('sid=') != -1 && getCookie("sid") != -1)) {
       header = "header-footer/header.html";
       footer = "header-footer/footer.html";
   
@@ -26,9 +26,6 @@ function loadContent() {
           console.error("Impossibile caricare il contenuto del documento HTML: ", error);
         });
     }else{
-      /*console.log(nomePagina);
-      console.log(document.cookie.indexOf('sid='));
-      console.log(getCookie("sid"));*/
       window.location.href = 'login.html';
     }
   } else {

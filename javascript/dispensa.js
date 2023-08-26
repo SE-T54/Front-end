@@ -20,13 +20,14 @@ function get_ingredients() {
       showIngredients();
     })
     .catch(error => {
-      console.error('Errore:', error);
+      console.error(error);
     });
 }
 
 function modifyOrder() {
-  let selezione = document.getElementById('menuAzione').value;
-  if (selezione === 'Alfabetico') {
+  let selezione = document.getElementById('menuTendina').value;
+  console.log(selezione);
+  if (selezione === 'alfabetico') {
     showAlpabetiOrder();
   } else {
     showExpirationOrder();
@@ -58,7 +59,7 @@ function showIngredients() {
         document.getElementById('ingredienti').innerHTML = str;
       })
       .catch(error => {
-        console.error('Errore nel recupero del file', error);
+        console.error(error);
       });
   }
 }
@@ -96,8 +97,7 @@ function deleteElement(button) {
 
     let nameElement = button.querySelector('#name');
     let ingredient = nameElement.textContent;
-    console.log(ingredient);
-    
+  
     const url = 'https://back-end-production-d316.up.railway.app/remove';
     const data = {
       sid: getCookie('sid'),
@@ -122,8 +122,7 @@ function deleteElement(button) {
         }
       })
       .catch(error => {
-        alert("Qualcosa non è andato a buon fine... Riprova.");
-        console.error('Errore:', error);
+        console.error(error);
       });
   }
 
