@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 expirationDate.setMonth(expirationDate.getMonth() + 3);
 
                 document.cookie = `sid=${encodeURIComponent(id)}; expires=${expirationDate.toUTCString()}; path=/`;
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             })
             .catch(error => {
                 if(error == "SyntaxError: Unexpected token 'W', \"Wrong Credentials\" is not valid JSON"){
@@ -39,7 +39,7 @@ function guestLogin(){
         expirationDate.setMonth(expirationDate.getMonth() + 3);
 
         document.cookie = `sid=${encodeURIComponent(id)}; expires=${expirationDate.toUTCString()}; path=/`;
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
         })
     .catch(error => {
         alert(error);
