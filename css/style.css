@@ -9,12 +9,13 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*height: 100vh; per centrare verticalmente*/
 }
 
 h1 {
@@ -33,6 +34,12 @@ h3 {
     color: #FFA500;
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+h4{
+  font-size: 18px;
+    margin: 40px 0;
+    color: #444444;
 }
 
   
@@ -229,3 +236,20 @@ option:hover{
   background-color: #FFFFFF;
   color: #FFA500;
 }
+
+.row2 {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid #FFA500;
+}
+
+.row2 img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.row2 h4 {
+  margin: 0;
+}
+

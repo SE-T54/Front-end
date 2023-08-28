@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (response.ok) {
           console.log('Richiesta POST eseguita con successo');
           alert("Ingrediente inserito correttamente");
+          window.location.href = "dispensa.html";
         } else {
           console.error('Errore nella richiesta POST:', response.status);
           alert("Ci dispiace, c\'è stato un errore");

@@ -98,9 +98,10 @@ nav {
         display: none;
         background-color: #ffa07a;
         padding: 0;
+        transform: translateY(-100%);
     }
 
     .menu .dropdown:hover .dropdown-content {
-        display: none;
+        display: block;
     }
 }
