@@ -19,12 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = "ricette.html";
             })
             .catch(error => {
-                if(error == "SyntaxError: Unexpected token 'W', \"Wrong Credentials\" is not valid JSON"){
-                    document.getElementById('password').value = "";
                     alert("Credenziali errate");
-                }else{
-                    console.error(error);
-                }
             });
     });
 });

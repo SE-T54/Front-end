@@ -37,7 +37,7 @@ h3 {
 }
 
 h4{
-  font-size: 18px;
+    font-size: 18px;
     margin: 40px 0;
     color: #444444;
 }
@@ -249,7 +249,10 @@ option:hover{
   margin-right: 20px;
 }
 
-.row2 h4 {
-  margin: 0;
+.row2 a {
+  font-size: 18px;
+    margin: 0;
+    color: #444444;
+    text-decoration: none;
 }
 
