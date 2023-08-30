@@ -104,7 +104,11 @@ input[type="button"]:hover {
 img {
   width: 80px;
   height: 80px;
-  margin-right: 20px;
+}
+
+img.small {
+  width: 22px;
+  height: 22px;
 }
 
 .card {
@@ -240,13 +244,8 @@ option:hover{
 .row2 {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
   border-bottom: 2px solid #FFA500;
-}
-
-.row2 img {
-  max-width: 100px;
-  margin-right: 20px;
 }
 
 .row2 a {
@@ -254,5 +253,25 @@ option:hover{
     margin: 0;
     color: #444444;
     text-decoration: none;
+}
+
+.row2 a:hover {
+  font-size: 18px;
+    margin: 0;
+    color: #FFA500;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.privacycontainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 

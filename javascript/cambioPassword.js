@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('confirm-new-password').value = "";
         } else {
             if (new_password === confirm_new_password) {
-                //cambia nome api
                 let sid = getCookie('sid');
 
                 // Crea l'oggetto JSON
@@ -35,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(response => {
                         if (response.ok) {
                             alert("Cambio password effettuato");
+                            window.location.href="areaRiservata.html";
                         } else {
                             alert(response.status);
                         }
