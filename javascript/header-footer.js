@@ -1,10 +1,12 @@
 function loadContent() {
   let header, footer;
-
+  //se il dispositivo ha a disposizione una finestra > 768
   if (window.innerWidth > 768) {
     var pathname = window.location.pathname;
     var nomePagina = pathname.substring(pathname.lastIndexOf('/') + 1);
+    //se mi trovo nella pagina di login o registrazione o il cliente è già autenticato 
     if ((nomePagina == "login.html" ||  nomePagina == "signup.html") || (document.cookie.indexOf('sid=') != -1 && getCookie("sid") != -1)) {
+      //inserisco header e footer
       header = "header-footer/header.html";
       footer = "header-footer/footer.html";
   
@@ -25,10 +27,11 @@ function loadContent() {
         .catch(error => {
           console.error("Impossibile caricare il contenuto del documento HTML: ", error);
         });
-    }else{
+    }else{//se non sono autenticato apro la pagina di login
       window.location.href = 'login.html';
     }
-  } else {
+  } else {//dispositivo mobile o con finestra piccola
+    //in caso di dispositivo mobile stampo solo l'header ma in basso
     header = "header-footer/header-mobile.html";
 
     fetch(header)
@@ -45,6 +48,7 @@ function loadContent() {
 window.addEventListener("DOMContentLoaded", loadContent);
 window.addEventListener("resize", loadContent);
 
+//ottiene il cookie con nome name
 function getCookie(name) {
   const cookieString = document.cookie;
   const cookies = cookieString.split(';');

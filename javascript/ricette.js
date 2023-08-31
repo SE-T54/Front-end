@@ -1,15 +1,18 @@
 var recipes = [];
 
+//ottiene le ricette che può fare l'utente in base al session ID
 function get_recipes() {
   let sid = getCookie('sid');
   let file = "card-ricetta.html";
   let str = "";
+  //chiamo le API per ottenere le ricette 
   fetch('https://back-end-production-d316.up.railway.app/recipes?sid=' + sid)
     .then(response => response.json())
     .then(data => {
       if (data.length === 0) {
         document.getElementById("ricette").innerHTML = "<h2>Errore, non è stata trovata alcuna ricetta</h2>";
       } else {
+        //Scrivo le informazioni delle ricette sulle card ricette
         data.forEach(item => {
           fetch(file)
             .then(response => response.text())
@@ -22,7 +25,6 @@ function get_recipes() {
               let recipe = {
                 name: title,
                 ingredients: ingredients,
-                //image: image,
                 link: link
               }
 
@@ -38,10 +40,13 @@ function get_recipes() {
       }
     })
     .catch(error => {
-      console.error(error);
+      //in caso la sessione sia scaduta è necessario rieffettuare il login
+      alert("Sessione scaduta!");
+      window.location.href = "login.html";
     });
 }
 
+//apre la pagina di info ricetta aggiungendo le info della ricetta come parametri dell'URL
 function click_function(button) {
   let recipe = button.textContent.trim();
   let ogg = trovaInfo(recipe);
@@ -52,6 +57,7 @@ function click_function(button) {
   window.location.href = pagina;  
 }
 
+//trova ritorna l'elemento di recipes con il nome corrispondente
 function trovaInfo(chiave) {
   let oggettoTrovato = recipes.find(function(oggetto) {
     return oggetto.name === chiave;

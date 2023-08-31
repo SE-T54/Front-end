@@ -1,12 +1,12 @@
 function login(){
-    window.location.href = "html/ricette.html";
+    window.location.href = "html/login.html";
 }
 function signup(){
     window.location.href = "html/signup.html";
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function autoLogin() {//effettua il login se l'utente risulta già autenticato
     if (document.cookie.indexOf('sid=') != -1 && getCookie("sid") != -1) {
-        window.location.href = "html/dispensa.html";
+        window.location.href = "html/ricette.html";
     }
-});
+}

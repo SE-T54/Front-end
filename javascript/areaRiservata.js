@@ -1,3 +1,4 @@
+//effettuo il logout settando a -1 il sid
 function logout(){
     var id = -1;
     var expirationDate = new Date();
@@ -7,6 +8,7 @@ function logout(){
     window.location.href = "login.html";
 }
 
+//elimino l'account chiamando la remove
 function deleteAccount(){
     let sid = getCookie('sid');
     logout();
@@ -21,6 +23,7 @@ function deleteAccount(){
       });
 }
 
+//apro la pagina di cambio password
 function changePassword(){
     window.location.href = "cambioPassword.html";
 }

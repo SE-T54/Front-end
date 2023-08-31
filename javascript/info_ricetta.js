@@ -10,10 +10,12 @@ var file = "card-ingrediente.html";
 
 document.addEventListener('DOMContentLoaded', loadInfo);
 
+//carica le informazioni sulla ricetta
 function loadInfo(){
   document.getElementById('ricetta').textContent = recipe;
   document.getElementById('link').href = link;
 
+  //formatta gli ingredienti nelle card ingrediente
   ingredients.forEach(item => {
     fetch(file)
       .then(response => response.text())
@@ -30,7 +32,7 @@ function loadInfo(){
   });
 }
 
-function click_function(button) {
+function click_function(button) {//apre la pagina di aggiunta ingrediente dell'elemento cliccato
   var ingredient = button.textContent.trim();
   var pagina = "aggiungi-ingrediente.html?ingrediente=" + ingredient;
   window.location.href = pagina;

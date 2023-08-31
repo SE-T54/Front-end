@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('myForm');
 
   form.addEventListener('submit', function (event) {
-    event.preventDefault(); // Impedisci il comportamento predefinito di invio del form
+    // Impedisci il comportamento predefinito di invio del form
+    event.preventDefault(); 
 
     // Ottieni i valori dai campi del form
     let sid = getCookie('sid');

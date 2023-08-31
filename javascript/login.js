@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('myForm');
-    
+    //aggiunge un listener al form in modo che rilevi il submit dell'utente
     form.addEventListener('submit', function(event) {
+        // Impedisci il comportamento predefinito di invio del form
         event.preventDefault();
         
         let username = document.getElementById('email').value;
         let password = document.getElementById('password').value;
 
+        //chiama le API scrivendo username e password nei parametri
         fetch('https://back-end-production-d316.up.railway.app/login?username=' + username + '&psw=' + password)
             .then(response => response.json())
             .then(data => {
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const expirationDate = new Date();
                 expirationDate.setMonth(expirationDate.getMonth() + 3);
-
+                //setta il cookie sid dandogli una validità di 3 mesi
                 document.cookie = `sid=${encodeURIComponent(id)}; expires=${expirationDate.toUTCString()}; path=/`;
                 window.location.href = "ricette.html";
             })
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//effettua il login come guest non passando username e password
 function guestLogin(){
     fetch('https://back-end-production-d316.up.railway.app/guest_registration')
     .then(response => response.text())
@@ -38,5 +41,5 @@ function guestLogin(){
         })
     .catch(error => {
         alert(error);
-        });
+    });
 }

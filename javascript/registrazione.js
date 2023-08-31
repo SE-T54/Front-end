@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('myFormRegistration');
-
+    //aggiunge un listener al form in modo che rilevi il submit dell'utente
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Impedisci il comportamento predefinito di invio del form
+        // Impedisci il comportamento predefinito di invio del form
+        event.preventDefault(); 
         
-        // Ottieni i valori dai campi del form
         var mail = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var confermaPassword = document.getElementById("confermaPassword").value;
@@ -16,14 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("confermaPassword").value = "";
         } else {
             if (password === confermaPassword) {
-                // Crea l'oggetto JSON
                 var jsonData = {
                     "mail": mail,
                     "psw": password,
                     "username": username
                 }
 
-                // Esegui la richiesta POST utilizzando fetch()
+                //Chiama le API usando POST per la registrazione
                 fetch('https://back-end-production-d316.up.railway.app/register', {
                     method: 'POST',
                     headers: {

@@ -1,8 +1,9 @@
 var ingredients = [];
 
+//ottiene gli ingredienti della dispensa di quell'utente
 function get_ingredients() {
   let sid = getCookie('sid');
-  console.log(sid);
+  //chiama le API per ottenere gli ingredienti dell'utente
   fetch('https://back-end-production-d316.up.railway.app/ingredients?sid=' + sid)
     .then(response => response.json())
     .then(data => {
@@ -10,6 +11,7 @@ function get_ingredients() {
         document.getElementById("ingredienti").innerHTML = "<h2>Non ci sono ingredienti</h2>";
       } else {
         data.forEach(item => {
+          //inserisce nell'array ingredients ogni ingrediente ricevuto
           let ingredient = {};
           ingredient.name = item.name;
           ingredient.expiration = item.expiration;
@@ -20,10 +22,12 @@ function get_ingredients() {
       showIngredients();
     })
     .catch(error => {
-      console.error(error);
+      alert("Sessione scduta!");
+      window.location.href = "login.html";
     });
 }
 
+//cambia l'odrine degli ingredienti
 function modifyOrder() {
   let selezione = document.getElementById('menuTendina').value;
   console.log(selezione);
@@ -34,17 +38,19 @@ function modifyOrder() {
   }
 }
 
+//ordina per scadenza e mostra gli ingredienti
 function showExpirationOrder() {
   expirationOrder(ingredients);
   showIngredients();
 }
 
+//ordine alfabetico e mostra gli ingredienti
 function showAlpabetiOrder() {
   alphabeticOrder(ingredients);
   showIngredients();
 }
 
-
+//mostra gli ingredienti di ingredients nelle card
 function showIngredients() {
   let str = "";
   let file = "card-ingrediente.html";
@@ -64,6 +70,7 @@ function showIngredients() {
   }
 }
 
+//definisco l'ordinamento lafabetico
 function alphabeticOrder(array) {
   array.sort(function (a, b) {
     let valoreA = a["name"].toLowerCase();
@@ -78,6 +85,7 @@ function alphabeticOrder(array) {
   });
 }
 
+//definisco l'ordinamento per scadenza
 function expirationOrder(array) {
   array.sort(function (a, b) {
     let dataA = new Date(a["expiration"]);
@@ -86,18 +94,20 @@ function expirationOrder(array) {
   });
 }
 
+//funzione chiamata al click dell'ingrediente
 function click_function(button){
   deleteElement(button);
 }
 
-
+//funzione di eliminazione dell'ingrediente
 function deleteElement(button) {
+  //chiedo all'utente la conferma di cancellazione
   let conferma = window.confirm("Vuoi eliminare questo ingrediente?");
   if (conferma) {
 
     let nameElement = button.querySelector('#name');
     let ingredient = nameElement.textContent;
-  
+    //chiamo le API con DELETE per rimuovere l'ingrediente
     const url = 'https://back-end-production-d316.up.railway.app/remove';
     const data = {
       sid: getCookie('sid'),
@@ -111,7 +121,7 @@ function deleteElement(button) {
       },
       body: JSON.stringify(data)
     };
-
+    
     fetch(url, requestOptions)
       .then(response => {
         if (response.ok) {

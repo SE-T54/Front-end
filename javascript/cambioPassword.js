@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('myForm');
 
+    //aggiungo un listener al form in modo di intercettare il submit di un utente
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Impedisci il comportamento predefinito di invio del form
+        // Impedisci il comportamento predefinito di invio del form
+        event.preventDefault(); 
 
         let old_password = document.getElementById('old-password').value;
         let new_password = document.getElementById('new-password').value;
