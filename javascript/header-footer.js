@@ -28,6 +28,7 @@ function loadContent() {
           console.error("Impossibile caricare il contenuto del documento HTML: ", error);
         });
     }else{//se non sono autenticato apro la pagina di login
+      alert("Non sei autenticato");
       window.location.href = 'login.html';
     }
   } else {//dispositivo mobile o con finestra piccola
@@ -65,6 +66,5 @@ function getCookie(name) {
       }
     }
   }
-
   return null;
 }

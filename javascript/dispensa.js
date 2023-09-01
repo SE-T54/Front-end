@@ -5,7 +5,13 @@ function get_ingredients() {
   let sid = getCookie('sid');
   //chiama le API per ottenere gli ingredienti dell'utente
   fetch('https://back-end-production-d316.up.railway.app/ingredients?sid=' + sid)
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      if (!response.ok) {
+        throw new Error('Errore nella richiesta HTTP: ' + response.status);
+      }
+      return response.json(); // Parsa la risposta JSON
+    })
     .then(data => {
       if (data.length === 0) {
         document.getElementById("ingredienti").innerHTML = "<h2>Non ci sono ingredienti</h2>";
@@ -20,9 +26,10 @@ function get_ingredients() {
       }
       expirationOrder(ingredients);
       showIngredients();
+
     })
     .catch(error => {
-      alert("Sessione scduta!");
+      alert("Sessione scaduta");
       window.location.href = "login.html";
     });
 }

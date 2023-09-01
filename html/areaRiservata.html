@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.7">
     <script src="../javascript/header-footer.js"></script>
     <script src="../javascript/areaRiservata.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", get_username());
+    </script>
   </head>
   <body>
     <div id="headerDesktop"></div>
@@ -15,12 +18,14 @@
     <div class="container">
       <h1>Area riservata</h1>
       <h4>In questa pagina è possibile accedere ad alcune informazioni come l'Username, logout, cambio passsword ed eliminazione account.</h4>
-      <img src="../img/user-icon.jpg" alt="Icona Utente">
-      <div class="user-info">
-        <h2>Username</h2>
-      </div>
 
-      <input type="button" value="Cambio Password" onclick="changePassword()">
+      <div class="user-info">
+        <h2 id="username"></h2>
+      </div>
+      <img src="../img/user-icon.jpg" alt="Icona Utente"><br>
+      
+
+      <input type="button" value="Cambio Password" id="cambioPassword" onclick="changePassword()">
       <input type="button" value="Logout" onclick="logout()">
       <input type="button" value="Elimina account" onclick="deleteAccount()">
 
