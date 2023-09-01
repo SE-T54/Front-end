@@ -7,6 +7,7 @@ function get_username(){
         if(data.guest){
             document.getElementById("username").textContent = "Hey Guest, Registrati per non perdere i tuoi dati!";
             document.getElementById("cambioPassword").style.display = "none";
+            document.getElementById("deleteAccount").style.display = "none";
         }else{
             document.getElementById("username").textContent = data.username;
         }
