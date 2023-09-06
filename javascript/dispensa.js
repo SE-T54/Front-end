@@ -1,4 +1,5 @@
 var ingredients = [];
+var index = 0;
 
 //ottiene gli ingredienti della dispensa di quell'utente
 function get_ingredients() {
@@ -6,11 +7,10 @@ function get_ingredients() {
   //chiama le API per ottenere gli ingredienti dell'utente
   fetch('https://back-end-production-d316.up.railway.app/ingredients?sid=' + sid)
     .then(response => {
-      console.log(response);
       if (!response.ok) {
         throw new Error('Errore nella richiesta HTTP: ' + response.status);
       }
-      return response.json(); // Parsa la risposta JSON
+      return response.json(); //Parsa la risposta JSON
     })
     .then(data => {
       if (data.length === 0) {
@@ -21,6 +21,8 @@ function get_ingredients() {
           let ingredient = {};
           ingredient.name = item.name;
           ingredient.expiration = item.expiration;
+          ingredient.index = index;
+          index = index + 1;
           ingredients.push(ingredient);
         });
       }
@@ -29,8 +31,9 @@ function get_ingredients() {
 
     })
     .catch(error => {
+      console.error(error);
       alert("Sessione scaduta");
-      window.location.href = "login.html";
+      //window.location.href = "login.html";
     });
 }
 
@@ -64,11 +67,13 @@ function showIngredients() {
   for (let i = 0; i < ingredients.length; i++) {
     let name = ingredients[i].name;
     let expiration = ingredients[i].expiration;
+    let indice = ingredients[i].index;
     fetch(file)
       .then(response => response.text())
       .then(card => {
         let s = card.replace("SPAZIONOME", name);
-        str += s.replace("SPAZIODATA", expiration);
+        let s2 = s.replace("INDEX",indice);
+        str += s2.replace("SPAZIODATA", expiration);
         document.getElementById('ingredienti').innerHTML = str;
       })
       .catch(error => {
@@ -77,7 +82,7 @@ function showIngredients() {
   }
 }
 
-//definisco l'ordinamento lafabetico
+//definisco l'ordinamento afabetico
 function alphabeticOrder(array) {
   array.sort(function (a, b) {
     let valoreA = a["name"].toLowerCase();
@@ -112,8 +117,7 @@ function deleteElement(button) {
   let conferma = window.confirm("Vuoi eliminare questo ingrediente?");
   if (conferma) {
 
-    let nameElement = button.querySelector('#name');
-    let ingredient = nameElement.textContent;
+    var ingredient = button.getAttribute("data-custom-data");
     //chiamo le API con DELETE per rimuovere l'ingrediente
     const url = 'https://back-end-production-d316.up.railway.app/remove';
     const data = {

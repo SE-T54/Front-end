@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         .then(response => {
                             if (response.ok) {
                                 alert("Ti sei registrato correttamente");
-                                window.location.href = "ricette.html";
+                                window.location.href = "login.html";
                             } else {
                                 console.error(error);
                                 alert("Registrazione non andata a buon fine, mail o username già in uso.");
